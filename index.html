@@ -60,6 +60,45 @@ input,select,textarea{background:#0000003d;border-color:var(--gline)}body.light 
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes drift{to{transform:translate(4%,3%) rotate(8deg) scale(1.08)}}
 @media(prefers-reduced-motion:no-preference){.view.active .card{animation:rise .5s cubic-bezier(.2,.7,.2,1) both}.view.active .card:nth-child(2){animation-delay:.06s}.view.active .card:nth-child(3){animation-delay:.12s}.view.active .card:nth-child(4){animation-delay:.18s}.view.active .card:nth-child(n+5){animation-delay:.24s}.bar i,.progress span{transition:width .9s cubic-bezier(.2,.7,.2,1)}.sw,.badge,#bnav button{transition:transform .15s}.sw:active,.badge:active,#bnav button:active{transform:scale(.92)}body::before{animation:drift 22s ease-in-out infinite alternate}}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" crossorigin href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Lora:wght@500;700&family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Sans+Tamil:wght@400;600;800&family=Nunito:wght@400;700;800&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" media="print" onload="this.media='all'">
+<style id="lookcss">
+:root{--r:18px;--pad:17px;--gap:14px;--z:1;--on:#fff;--fnt:"Plus Jakarta Sans",system-ui,sans-serif;--hfnt:var(--fnt)}
+body{--cb:color-mix(in srgb,#fff 7%,var(--bg));font-family:var(--fnt)}body.light{--cb:#fff}
+h1,h2,h3,.metric,.eyebrow{font-family:var(--hfnt)}
+.app{zoom:var(--z)}.grid{gap:var(--gap)}
+.card{border-radius:var(--r);padding:var(--pad)}
+.item,.badge,.notice{border-radius:calc(var(--r)*.65)}
+.btn,.tab,.opt,input,select,textarea,.sw{border-radius:calc(var(--r)*.6)}
+.btn.primary,.tab.active{color:var(--on)}
+[hidden]{display:none!important}
+.check,.item,.list,.field{text-align:left}.check{justify-content:flex-start}
+.top{padding:10px 14px;border:1px solid var(--gline);border-radius:calc(var(--r)*.9)}
+.actions{flex-wrap:nowrap}.actions .btn{padding:9px 12px;min-width:42px}
+@media(max-width:560px){.brand small{display:none}}
+.swatches{flex-wrap:wrap}
+body.light .metric{background:linear-gradient(90deg,var(--text),color-mix(in srgb,var(--a2) 60%,#000));-webkit-background-clip:text;background-clip:text}
+body.light .brand h1{background:linear-gradient(90deg,color-mix(in srgb,var(--a1) 70%,#000),color-mix(in srgb,var(--a2) 60%,#000));-webkit-background-clip:text;background-clip:text}
+body[data-card=solid] .card{background:var(--cb);-webkit-backdrop-filter:none;backdrop-filter:none;border-color:var(--line);box-shadow:0 6px 18px #0003}
+body[data-card=outline] .card{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;border:1.5px solid color-mix(in srgb,var(--a1) 55%,transparent);box-shadow:none}
+body[data-card=soft] .card{background:color-mix(in srgb,var(--text) 7%,transparent);-webkit-backdrop-filter:none;backdrop-filter:none;border-color:transparent;box-shadow:0 8px 24px #0002}
+body[data-card=tint] .card{background:linear-gradient(145deg,color-mix(in srgb,var(--a1) 24%,transparent),color-mix(in srgb,var(--a2) 9%,transparent));border-color:color-mix(in srgb,var(--a1) 40%,transparent)}
+body[data-bg=calm]::before{animation:none!important}
+body[data-bg=plain]::before{display:none}
+body[data-bg=dots]::before{inset:0;filter:none;opacity:.55;animation:none!important;background:radial-gradient(color-mix(in srgb,var(--text) 22%,transparent) 1px,transparent 1.6px) 0 0/22px 22px}
+body[data-motion=off] *,body[data-motion=off] *::before{animation:none!important;transition:none!important}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 18px}.opts+h3{margin-top:4px}
+.opt{border:1px solid var(--gline);background:var(--glass2);color:var(--text);padding:9px 14px}
+.opt.on{background:linear-gradient(135deg,var(--a1),var(--a2));color:var(--on);border-color:transparent;font-weight:700}
+.presets{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px}
+.pre{border:0;text-align:left;padding:14px 12px;min-height:70px;font-weight:700;border-radius:calc(var(--r)*.7);display:flex;align-items:flex-end}
+.pre:active,.opt:active{transform:scale(.96)}
+#look input[type=range]{padding:0;border:0;background:none;accent-color:var(--a1);margin:6px 0 18px}
+#look .sw{width:42px;height:42px}
+.rtrack{stroke:color-mix(in srgb,var(--text) 14%,transparent)}
+body.light .bar,body.light .progress{background:#0000001a}
+.row{flex-wrap:wrap}.chip{border-radius:calc(var(--r)*.6)}
+body[data-lang=ta] .eyebrow,body[data-lang=hi] .eyebrow{letter-spacing:.3px;text-transform:none}
 </style></head>
 <body><main class="app">
 <header class="top"><div class="brand"><div class="logo">L</div><div><h1>LIFECORE</h1><small data-i18n="tagline">YOUR PERSONAL WELLNESS COMPANION</small></div></div><div class="actions"><button class="btn" id="installBtn" hidden data-i18n="install">Install app</button><button class="btn" id="themeBtn" data-i18n="theme">Theme</button></div></header>
@@ -225,7 +264,7 @@ $("#reminderTime").value=db.reminder.time||"20:00";$("#reminderEnabled").checked
  const totalKm=weekActs.reduce((a,x)=>a+Number(x.distance||0),0)+runs.filter(x=>weekDates.has(x.date)).reduce((a,x)=>a+Number(x.km||0),0);
  $("#coachQuick").innerHTML=[`You logged ${weekActs.length} activity entries in the last 7 days.`,`You recorded ${weekMeals.length} meals in the last 7 days.`,`Your logged distance this week is ${totalKm.toFixed(2)} km.`,`You have ${db.habits.length} personal habits configured.`].map(x=>`<div class="item">${esc(x)}</div>`).join("");
  applyTheme();
-const gW=db.waterGoal||2000,gM=db.moveGoal||3,hd=db.habits.filter(h=>checks[h]).length,ring=(p,id,t,l)=>`<div class="ringbox"><svg viewBox="0 0 100 100"><defs><linearGradient id="${id}"><stop offset="0" style="stop-color:var(--a1)"/><stop offset="1" style="stop-color:var(--a2)"/></linearGradient></defs><circle cx="50" cy="50" r="42" class="rtrack"/><circle cx="50" cy="50" r="42" class="rbar" stroke="url(#${id})" style="stroke-dasharray:${Math.min(1,p)*263.9} 264"/></svg><b>${t}</b><small>${l}</small></div>`;
+const gW=db.waterGoal||2000,gM=db.moveGoal||3,hd=db.habits.filter(h=>checks[h]).length,ring=(p,id,t,l)=>`<div class="ringbox"><svg viewBox="0 0 100 100"><defs><linearGradient id="${id}"><stop offset="0" style="stop-color:var(--a1)"/><stop offset="1" style="stop-color:var(--a2)"/></linearGradient></defs><circle cx="50" cy="50" r="42" class="rtrack"/><circle cx="50" cy="50" r="42" class="rbar" stroke="url(#${id})" style="stroke-dasharray:${Math.min(1,p)*263.9} 264;stroke-opacity:${p>0.004?1:0}"/></svg><b>${t}</b><small>${l}</small></div>`;
 $("#rings").innerHTML=ring(w/gW,"rg1",Math.round(w/gW*100)+"%",tx("Water"))+ring(km/gM,"rg2",km.toFixed(1)+" km",tx("Movement"))+ring(db.habits.length?hd/db.habits.length:0,"rg3",hd+"/"+db.habits.length,tx("Habits"));
 let st=0;{const has=ds=>db.activities.some(x=>x.date===ds)||db.workouts.some(x=>x.date===ds)||db.runs.some(x=>x.date===ds)||Object.values(db.checks[ds]||{}).some(Boolean),dt=new Date();if(!has(dt.toLocaleDateString("en-CA")))dt.setDate(dt.getDate()-1);while(st<3650&&has(dt.toLocaleDateString("en-CA"))){st++;dt.setDate(dt.getDate()-1)}}
 $("#streak").textContent=st?"🔥 "+st+" "+({ta:"நாள் தொடர்",hi:"दिन लगातार"}[db.profile.language]||"day streak"):"";$("#streak").hidden=!st;
@@ -304,4 +343,57 @@ installBtn.addEventListener("click",async()=>{if(!deferredPrompt){toast("Open br
 window.addEventListener("appinstalled",()=>{installBtn.hidden=true;toast("LIFECORE installed")});
 if("serviceWorker"in navigator&&location.protocol!=="file:")window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
 recoverDraft();applyTheme();$$("form").forEach(dateInit);document.body.classList.toggle("light",db.theme==="light");render();
-</script></body></html>
+</script><script id="lookjs">
+(function(){
+const FN=',"Noto Sans Tamil","Nirmala UI",Latha,"Noto Sans Devanagari",system-ui,sans-serif';
+const FONTS={jak:["Jakarta",'"Plus Jakarta Sans"'],nun:["Nunito","Nunito"],dm:["DM Sans",'"DM Sans"'],lora:["Lora","Lora,Georgia,serif"],tam:["தமிழ்",'"Noto Sans Tamil"'],sys:["System","system-ui,-apple-system,Roboto"]};
+Object.assign(PAL,{forest:["#34d399","#a3e635","#06130e"],rose:["#f472b6","#fb923c","#150810"],mint:["#2dd4bf","#38bdf8","#051a1c"],coffee:["#e0a96d","#f2cf9e","#16100b"],berry:["#c084fc","#f472b6","#12081a"],peacock:["#14b8a6","#6366f1","#061519"],mono:["#e5e7eb","#9ca3af","#0a0a0b"],amoled:["#22d3ee","#a78bfa","#000000"]});
+const PRE=[["Night glass",{pal:"aurora",mode:"dark",font:"jak",head:"same",card:"glass",bg:"glow",r:18}],["Clean light",{pal:"mint",mode:"light",font:"dm",head:"same",card:"solid",bg:"plain",r:14}],["Tamil gold",{pal:"tamil",mode:"dark",font:"tam",head:"serif",card:"tint",bg:"calm",r:22}],["AMOLED",{pal:"amoled",mode:"dark",font:"sys",head:"same",card:"outline",bg:"plain",r:10}],["Forest calm",{pal:"forest",mode:"dark",font:"nun",head:"round",card:"soft",bg:"calm",r:26}],["Rose paper",{pal:"rose",mode:"light",font:"lora",head:"serif",card:"soft",bg:"dots",r:20}]];
+const PT={"Night glass":["இரவு கண்ணாடி","नाइट ग्लास"],"Clean light":["சுத்த ஒளி","क्लीन लाइट"],"Tamil gold":["தமிழ் தங்கம்","तमिल गोल्ड"],AMOLED:["ஆமோல்ட்","एमोलेड"],"Forest calm":["காடு அமைதி","फ़ॉरेस्ट कैल्म"],"Rose paper":["ரோஜா காகிதம்","रोज़ पेपर"]};
+const D={title:["Look studio","தோற்ற ஸ்டுடியோ","लुक स्टूडियो"],sub:["Tap anything. The app changes instantly.","எதையும் தொடுங்கள். ஆப் உடனே மாறும்.","कुछ भी टैप करें। ऐप तुरंत बदलता है।"],tab:["Look","தோற்றம்","लुक"],pre:["Quick looks","விரைவு தோற்றங்கள்","झटपट लुक"],col:["Colours","நிறங்கள்","रंग"],mode:["Mode","பயன்முறை","मोड"],dark:["Dark","இருள்","डार्क"],light:["Light","ஒளி","लाइट"],auto:["Auto","தானியங்கி","ऑटो"],font:["Font","எழுத்துரு","फ़ॉन्ट"],head:["Headings","தலைப்புகள்","शीर्षक"],same:["Same","ஒன்றே","समान"],serif:["Serif","செரிஃப்","सेरिफ़"],round:["Round","வட்டம்","गोल"],card:["Cards","கார்டுகள்","कार्ड"],glass:["Glass","கண்ணாடி","ग्लास"],solid:["Solid","திடம்","सॉलिड"],outline:["Outline","கோடு","आउटलाइन"],soft:["Soft","மென்மை","सॉफ्ट"],tint:["Tint","சாயல்","टिंट"],bg:["Background","பின்னணி","बैकग्राउंड"],glow:["Glow","ஒளிர்வு","ग्लो"],calm:["Calm","அமைதி","शांत"],plain:["Plain","வெறுமை","सादा"],dots:["Dots","புள்ளி","डॉट्स"],corner:["Corner roundness","மூலை வளைவு","कोनों की गोलाई"],size:["Text size","எழுத்து அளவு","टेक्स्ट साइज़"],dens:["Spacing","இடைவெளி","स्पेसिंग"],tight:["Tight","நெருக்கம்","कम"],norm:["Normal","சாதாரணம்","सामान्य"],roomy:["Roomy","விசாலம்","ज़्यादा"],motion:["Animations","அசைவுகள்","एनिमेशन"],on:["On","ஆன்","चालू"],off:["Off","ஆஃப்","बंद"],reset:["Reset to default","இயல்புக்கு மாற்று","डिफ़ॉल्ट पर रीसेट"],more:["More looks","மேலும் தோற்றங்கள்","और लुक"]};
+const t=k=>D[k][{ta:1,hi:2}[db.profile.language]||0];
+const L=()=>Object.assign({font:"jak",head:"same",card:"glass",bg:"glow",r:18,size:1,dens:1,motion:1,mode:""},db.look||{});
+const lum=h=>{const c=[1,3,5].map(i=>{const v=parseInt(h.substr(i,2),16)/255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)});return .2126*c[0]+.7152*c[1]+.0722*c[2]};
+const cr=(a,b)=>(Math.max(a,b)+.05)/(Math.min(a,b)+.05);
+const onFor=p=>{const a=lum(p[0]),b=lum(p[1]),d=lum("#10131d");return Math.min(cr(a,d),cr(b,d))>Math.min(cr(a,1),cr(b,1))?"#10131d":"#fff"};
+function applyLook(){const l=L(),b=document.body,s=b.style,p=PAL[db.palette]||PAL.aurora,f=FONTS[l.font]||FONTS.jak;
+s.setProperty("--on",onFor(p));if(db.theme==="light")s.setProperty("--bg","color-mix(in srgb,"+p[0]+" 6%,#f6f7fb)");
+s.setProperty("--r",l.r+"px");s.setProperty("--z",[.92,1,1.1,1.2][l.size]||1);
+s.setProperty("--pad",[12,17,22][l.dens]+"px");s.setProperty("--gap",[9,14,20][l.dens]+"px");
+s.setProperty("--fnt",f[1]+FN);s.setProperty("--hfnt",l.head==="serif"?"Lora,Georgia,serif"+FN:l.head==="round"?"Nunito"+FN:"var(--fnt)");
+b.dataset.lang=db.profile.language;b.dataset.card=l.card;b.dataset.bg=l.bg;b.dataset.motion=l.motion?"on":"off"}
+const _at=applyTheme;applyTheme=function(){if(L().mode==="auto")db.theme=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";document.body.classList.toggle("light",db.theme==="light");_at();applyLook()};
+const opts=(k,list,cur,fmt)=>'<div class="opts">'+list.map(v=>`<button type="button" class="opt${String(v)===String(cur)?" on":""}" data-k="${k}" data-v="${v}"${fmt?` style="font-family:${FONTS[v][1]+FN}"`:""}>${fmt?FONTS[v][0]+" Aa":t(v)}</button>`).join("")+"</div>";
+function panel(){const l=L(),el=document.getElementById("look");if(!el)return;
+document.querySelector('#tabs [data-view=look]').textContent="🎨 "+t("tab");
+const g=document.getElementById("goLook");if(g)g.textContent="🎨 "+t("more");
+const pre=PRE.map(([n,x])=>{const p=PAL[x.pal],nm=({ta:1,hi:2}[db.profile.language]&&PT[n][{ta:0,hi:1}[db.profile.language]])||n;return `<button type="button" class="pre" data-p="${n}" style="background:linear-gradient(135deg,${p[0]},${p[1]});color:${onFor(p)}">${nm}</button>`}).join("");
+const sw=Object.entries(PAL).map(([k,v])=>`<button type="button" data-k="pal" data-v="${k}" class="sw${(db.palette||"aurora")===k?" on":""}" style="background:linear-gradient(135deg,${v[0]},${v[1]})" aria-label="${k}"></button>`).join("");
+const md=l.mode==="auto"?"auto":db.theme==="light"?"light":"dark";
+el.innerHTML=`<h2>🎨 ${t("title")}</h2><p class="muted">${t("sub")}</p><div class="grid"><div class="card"><h3>${t("pre")}</h3><div class="presets">${pre}</div></div>
+<div class="card s6"><h3>${t("col")}</h3><div class="swatches" style="margin-bottom:18px">${sw}</div><h3>${t("mode")}</h3>${opts("mode",["dark","light","auto"],md)}</div>
+<div class="card s6"><h3>${t("font")}</h3>${opts("font",Object.keys(FONTS),l.font,1)}<h3>${t("head")}</h3>${opts("head",["same","serif","round"],l.head)}</div>
+<div class="card s6"><h3>${t("card")}</h3>${opts("card",["glass","solid","outline","soft","tint"],l.card)}<h3>${t("bg")}</h3>${opts("bg",["glow","calm","plain","dots"],l.bg)}</div>
+<div class="card s6"><h3>${t("corner")}</h3><input type="range" id="rr" min="4" max="32" value="${l.r}"><h3>${t("size")}</h3><div class="opts">${["S","M","L","XL"].map((x,i)=>`<button type="button" class="opt${l.size==i?" on":""}" data-k="size" data-v="${i}">${x}</button>`).join("")}</div><h3>${t("dens")}</h3>${opts("dens",["tight","norm","roomy"],["tight","norm","roomy"][l.dens]).replace(/data-v="(tight|norm|roomy)"/g,(m,a)=>`data-v="${["tight","norm","roomy"].indexOf(a)}"`)}<h3>${t("motion")}</h3><div class="opts"><button type="button" class="opt${l.motion?" on":""}" data-k="motion" data-v="1">${t("on")}</button><button type="button" class="opt${l.motion?"":" on"}" data-k="motion" data-v="0">${t("off")}</button></div></div>
+<div class="card"><button type="button" class="btn" id="lookReset">↺ ${t("reset")}</button></div></div>`}
+document.getElementById("settings").insertAdjacentHTML("afterend",'<section class="view" id="look"></section>');
+document.getElementById("tabs").insertAdjacentHTML("beforeend",'<button class="tab" data-view="look"></button>');
+const sg=document.getElementById("swatches");if(sg)sg.parentElement.insertAdjacentHTML("beforeend",'<button type="button" class="btn" id="goLook" style="margin-top:10px"></button>');
+const ac=document.querySelector(".actions"),tb=document.getElementById("themeBtn");
+tb.removeAttribute("data-i18n");tb.textContent="🌓";tb.setAttribute("aria-label","Light / dark");
+ac.insertAdjacentHTML("afterbegin",'<button class="btn" id="lookBtn" aria-label="Look">🎨</button>');
+document.getElementById("lookBtn").onclick=()=>go("look");
+tb.onclick=()=>{const nt=document.body.classList.contains("light")?"dark":"light";db.theme=nt;db.look={...L(),mode:nt};persist()};
+const _r=render;render=function(){_r();applyLook();panel()};
+document.addEventListener("click",e=>{
+if(e.target.closest("#goLook"))return go("look");
+if(e.target.closest("#lookReset")){delete db.look;db.palette="aurora";db.theme="dark";return persist()}
+const p=e.target.closest("#look [data-p]");if(p){const x=PRE.find(a=>a[0]===p.dataset.p)[1];db.palette=x.pal;db.theme=x.mode;db.look={...L(),font:x.font,head:x.head,card:x.card,bg:x.bg,r:x.r,mode:x.mode};return persist()}
+const o=e.target.closest("#look [data-k]");if(!o)return;const k=o.dataset.k,v=o.dataset.v;
+if(k==="pal")db.palette=v;else if(k==="mode"){if(v!=="auto")db.theme=v;db.look={...L(),mode:v}}else db.look={...L(),[k]:isNaN(v)?v:+v};persist()});
+document.addEventListener("input",e=>{if(e.target.id==="rr"){db.look={...L(),r:+e.target.value};applyLook()}});
+document.addEventListener("change",e=>{if(e.target.id==="rr")persist()});
+applyTheme();panel();
+})();
+</script>
+</body></html>
